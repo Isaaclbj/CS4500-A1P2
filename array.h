@@ -1,11 +1,6 @@
 #pragma once
 
-#include <cassert>
-#include <climits>
-#include <cstdio>
 #include <cstdlib>
-#include <cstring>
-#include <cmath>
 #include "object.h"
 #include "string.h"
 
