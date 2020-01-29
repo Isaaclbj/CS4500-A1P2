@@ -1,13 +1,5 @@
-This is an implementation of the java-style arraylist.
+Update Jan 29:
 
-It inherits from the Object class.
+Using new object and string classes.
 
-It has a unique hash value.
-
-It starts with capacity of 2.
-
-It can store a flexible size of itmes.
-
-It expands itself when needed.
-
-It can be compared with another array.
+Will make more tests soon, probably tonight.
