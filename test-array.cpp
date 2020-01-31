@@ -114,10 +114,10 @@ main(int argc, char **argv)
     assert(fa->length() == 1);
     fa->append(2.0);
     assert(fa->length() == 2);
-
+    
     // get
-    assert(fa->get(0) == 1.0);
-    assert(fa->get(1) == 2.0);
+    assert(fa->get(0) - 1.0 < 0.001);
+    assert(fa->get(1) - 2.0 < 0.001);
 
     // index_of
     assert(fa->index_of(1.0) == 0);
