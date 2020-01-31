@@ -54,7 +54,7 @@ class IntArray : public Array {
   ~IntArray() {}
 
   // putting an item at the end of the array
-  void append(size_t oo) {}
+  void append(int oo) {}
 
   // get the n'th item in the array
   int get(size_t nn) {}
@@ -62,11 +62,11 @@ class IntArray : public Array {
 
   // remove the n'th item in the array
   // returning the removed item to the caller
-  size_t remove(size_t nn) {}
+  int remove(size_t nn) {}
 
   // set n'th element to the given element
   // returns the replace Object.
-  size_t set(size_t nn, int oo) {}
+  int set(size_t nn, int oo) {}
 
   // get the index of an element in the array
   size_t index_of(int oo) {}
