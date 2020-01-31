@@ -48,9 +48,32 @@ main(int argc, char **argv)
     aa->append(foo);
     aa->append(bar);
     assert(aa->index_of(bar) == 1);
+    delete foo;
+    delete bar;
+
+    // tests for clear
+    aa->clear();
+    assert(aa->length() == 0);
+
+    // tests for hash and equal
+    Array* bb = new Array();
+    assert(aa->equals(bb));
+    assert(aa->hash() == aa->hash());
+
+    foo = new Object;
+    aa->append(foo);
+    assert(aa->hash() != bb->hash());
+    assert(!(aa->equals(bb)));
+
+    bb->append(foo);
+    assert(aa->equals(bb));
+    assert(aa->hash() == bb->hash());
+
+    delete foo;
 
     // tests for destructor
     delete aa;
+    delete bb;
 
     printf("tests for Object Array passed\n");
 
@@ -96,8 +119,27 @@ main(int argc, char **argv)
     assert(ii = 1);
     assert(ia->length() == 0);
 
+    // tests for clear
+    ia->clear();
+    assert(ia->length() == 0);
+
+    // tests for hash and equal
+    IntArray *ib = new IntArray();
+    assert(ia->equals(ib));
+    assert(ia->hash() == ib->hash());
+
+    
+    ia->append(3);
+    assert(ia->hash() != ib->hash());
+    assert(!(ia->equals(ib)));
+
+    ib->append(3);
+    assert(ia->equals(ib));
+    assert(ia->hash() == ib->hash());
+
     // delete
     delete ia;
+    delete ib;
 
     printf("tests for Integer Array passed\n");
     
@@ -132,6 +174,27 @@ main(int argc, char **argv)
     ff = fa->set(0, 100.0);
     assert(ff = 2.0);
     assert(fa->get(0) == 100.0);
+
+    // tests for clear
+    fa->clear();
+    assert(fa->length() == 0);
+
+    // tests for hash and equal
+    FloatArray *fb = new FloatArray();
+    assert(fa->equals(fb));
+    assert(fa->hash() == fb->hash());
+
+    
+    fa->append(3.00);
+    assert(fa->hash() != fb->hash());
+    assert(!(fa->equals(fb)));
+
+    fb->append(3.00);
+    assert(fa->equals(fb));
+    assert(fa->hash() == fb->hash());
+
+    // delete
+    delete fb;
     
     // destructor
     delete fa;
@@ -174,10 +237,94 @@ main(int argc, char **argv)
     // index_of
     assert(ba->index_of(false) == 0);
 
+    // tests for clear
+    ba->clear();
+    assert(ba->length() == 0);
+
+    // tests for hash and equal
+    BoolArray *bc = new BoolArray();
+    assert(ba->equals(bc));
+    assert(ba->hash() == bc->hash());
+
+    
+    ba->append(true);
+    assert(ba->hash() != bc->hash());
+    assert(!(ba->equals(bc)));
+
+    bc->append(true);
+    assert(ba->equals(bc));
+    assert(ba->hash() == bc->hash());
+
+    // delete
+    delete bc;
+
     // delete
     delete ba;
     
-    printf("tests for Integer Array passed\n");
+    printf("tests for Bool Array passed\n");
+
+    // tests for string array
+    StringArray *sa = new StringArray();
+    if(sa)
+    {
+        puts("bool array constructor: OK");
+    }
+    else
+    {
+        abort();
+    }
+
+    String * strfoo = new String("foo");
+    String * strbar = new String("bar");
+
+    assert(sa->length() == 0);
+    sa->append(strfoo);
+    assert(sa->length() == 1);
+    sa->append(strbar);
+    assert(sa->length() == 2);
+    
+    assert(sa->get(0)->equals(strfoo));
+    assert(sa->get(1)->equals(strbar));
+
+    //remove
+    String * str_ = sa->remove(0);
+    assert(str_->equals(strfoo));
+    assert(sa->length() == 1);
+
+    
+    // set
+    str_ = sa->set(0, strfoo);
+    assert(str_->equals(strbar));
+    assert(sa->get(0)->equals(strfoo));
+
+    // index_of
+    assert(ba->index_of(strfoo) == 0);
+
+    // tests for clear
+    sa->clear();
+    assert(sa->length() == 0);
+
+    // tests for hash and equal
+    StringArray *sb = new StringArray();
+    assert(sa->equals(sb));
+    assert(sa->hash() == sb->hash());
+
+    
+    sa->append(strfoo);
+    assert(sa->hash() != sb->hash());
+    assert(!(sa->equals(sb)));
+
+    sb->append(strfoo);
+    assert(sa->equals(sb));
+    assert(sa->hash() == sb->hash());
+
+    // delete
+    delete sa;
+
+    // delete
+    delete sb;
+    
+    printf("tests for String Array passed\n");
     puts("all tests passed");
     return 0;
 }

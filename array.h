@@ -35,6 +35,9 @@ class Array : public Object {
     // get the index of an object in the array
     virtual size_t index_of(Object* oo) {}
 
+    // reset and delete every element in the array
+    virtual void clear();
+
     // Compares other with this array for equality.
     bool equals(Object* oo) {}
 
@@ -74,6 +77,9 @@ class IntArray : public Array {
   // Compares other with this array for equality.
   bool equals(Object* oo) {}
 
+  // reset and delete every element in the array
+  virtual void clear();
+
   size_t hash() {}
 };
 
@@ -106,6 +112,8 @@ class FloatArray : public Array {
   // Compares other with this array for equality.
   bool equals(Object* oo) {}
 
+  // reset and delete every element in the array
+  virtual void clear();
   size_t hash() {}
 };
 
@@ -136,6 +144,9 @@ class BoolArray : public Array {
 
   // Compares other with this array for equality.
   bool equals(Object* oo);
+  
+  // reset and delete every element in the array
+  virtual void clear();
 
   size_t hash();
 };
@@ -162,6 +173,9 @@ class StringArray : public Array {
   // returning the removed item to the caller
   String* remove(size_t nn);
 
+  // reset and delete every element in the array
+  virtual void clear();
+  
   // set n'th element to the given object
   // returns the replace Object.
   String* set(size_t nn, String* oo);
